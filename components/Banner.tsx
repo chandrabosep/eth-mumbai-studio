@@ -27,13 +27,12 @@ const Banner: React.FC<BannerProps> = ({
   return (
     <>
       <svg
-        width="1000"
-        height="400"
+        height={"400"}
         viewBox="0 0 5110 2400"
         fill="none"
         ref={svgRef}
         xmlns="http://www.w3.org/2000/svg"
-        className="border border-1.5 border-white/10 rounded-md"
+        className="border border-1.5 border-white/10 rounded-md w-[390px] h-full md:w-full md:h-full"
       >
         <rect
           width="5110"

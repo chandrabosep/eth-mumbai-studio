@@ -14,12 +14,12 @@ export default function Home() {
     setbg: state.setbg,
   }));
   const [outerTop, setOuterTop] = useState("#F89D21");
-  const [outerBottom, setOuterBottom] = useState("#F89D21");
+  const [outerBottom, setOuterBottom] = useState("#000000");
   const [innerTop, setInnerTop] = useState("#000000");
-  const [innerBottom, setInnerBottom] = useState("#000000");
+  const [innerBottom, setInnerBottom] = useState("#F89D21");
   const [textColor, setTextColor] = useState("#F89D21");
   const [currentClickedPart, setCurrentClickedPart] = useState("");
-  const [color, setColor] = useState("#F89D21");
+  const [color, setColor] = useState("");
   const [displayColorPicker, setDisplayColorPicker] = useState("hidden");
 
   useEffect(() => {
@@ -91,15 +91,18 @@ export default function Home() {
     <div className="bg-black min-h-screen p-24 flex justify-center items-center">
       <div className="flex flex-col items-center gap-8">
         <Tabs
-          defaultValue="logo"
+          defaultValue="banner"
           className="w-full flex flex-col gap-8 justify-center items-center"
         >
           <TabsList className="w-fit bg-theme-dark text-theme-light/50 py-1.5 px-1.5 ">
-            <TabsTrigger value="logo" className="text-lg rounded-md">
-              Logo
-            </TabsTrigger>
-            <TabsTrigger value="banner" className="text-lg rounded-md">
+            <TabsTrigger
+              value="banner"
+              className="text-lg  font-light rounded-md"
+            >
               Banner
+            </TabsTrigger>
+            <TabsTrigger value="logo" className="text-lg font-light rounded-md">
+              Logo
             </TabsTrigger>
           </TabsList>
           <TabsContent value="logo">
@@ -114,7 +117,7 @@ export default function Home() {
               setDisplayColorPicker={setDisplayColorPicker}
             />
           </TabsContent>
-          <TabsContent value="banner" className="w-full">
+          <TabsContent value="banner">
             <Banner
               svgRef={svgRef}
               bg={bg}
@@ -131,13 +134,13 @@ export default function Home() {
 
         <div className="flex gap-5 ">
           <Button
-            className="bg-theme-dark border border-theme-dark text-lg text-theme-light"
+            className="bg-theme-dark border font-light border-theme-light/10 text-base text-theme-light"
             onClick={() => downloadImage("jpg")}
           >
             Download JPG
           </Button>
           <Button
-            className="bg-theme-dark text-lg text-theme-light"
+            className="bg-theme-dark text-base border-theme-light/10 font-light text-theme-light"
             onClick={() => {
               setbg("none");
               downloadPng();
