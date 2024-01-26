@@ -5,15 +5,19 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Banner from "@/components/Banner";
 import Logo from "@/components/Logo";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useStore } from "@/context/store";
 
 export default function Home() {
-  const [bg, setbg] = useState("#121212");
+  const { bg, setbg } = useStore((state) => ({
+    bg: state.bg,
+    setbg: state.setbg,
+  }));
   const [outerTop, setOuterTop] = useState("#F89D21");
-  const [outerBottom, setOuterBottom] = useState("#FFFFFF");
-  const [innerTop, setInnerTop] = useState("#FFFFFF");
-  const [innerBottom, setInnerBottom] = useState("#F89D21");
-  const [textColor, setTextColor] = useState("#000000");
-
+  const [outerBottom, setOuterBottom] = useState("#F89D21");
+  const [innerTop, setInnerTop] = useState("#000000");
+  const [innerBottom, setInnerBottom] = useState("#000000");
+  const [textColor, setTextColor] = useState("#F89D21");
   const [currentClickedPart, setCurrentClickedPart] = useState("");
   const [color, setColor] = useState("#F89D21");
   const [displayColorPicker, setDisplayColorPicker] = useState("hidden");
@@ -21,21 +25,38 @@ export default function Home() {
   useEffect(() => {
     switch (currentClickedPart) {
       case "outerTop":
-        return setOuterTop(color);
+        setOuterTop(color);
+        break;
       case "outerBottom":
-        return setOuterBottom(color);
+        setOuterBottom(color);
+        break;
       case "innerTop":
-        return setInnerTop(color);
+        setInnerTop(color);
+        break;
       case "innerBottom":
-        return setInnerBottom(color);
+        setInnerBottom(color);
+        break;
       case "bg":
-        return setbg(color);
+        setbg(color);
+        break;
       case "textColor":
-        return setTextColor(color);
+        setTextColor(color);
+        break;
+      default:
+        break;
     }
-  }, [color]);
+  }, [color, setbg]);
 
   const svgRef = useRef<SVGSVGElement>(null);
+
+  async function downloadPng() {
+    await new Promise<void>(() => {
+      setTimeout(() => {
+        downloadImage("png");
+      }, 1000);
+    });
+  }
+
   const downloadImage = (type: string) => {
     const svgString = new XMLSerializer().serializeToString(
       svgRef.current as SVGSVGElement
@@ -69,91 +90,60 @@ export default function Home() {
   return (
     <div className="bg-black min-h-screen p-24 flex justify-center items-center">
       <div className="flex flex-col items-center gap-8">
-        {/* <svg
-          width="400"
-          height="400"
-          viewBox="0 0 2400 2400"
-          fill="none"
-          ref={svgRef}
-          xmlns="http://www.w3.org/2000/svg"
-          className="border border-white/10 rounded-md"
+        <Tabs
+          defaultValue="logo"
+          className="w-full flex flex-col gap-8 justify-center items-center"
         >
-          <rect
-            width="2400"
-            height="2400"
-            fill={bg}
-            onClick={() => {
-              setCurrentClickedPart("bg");
-              setDisplayColorPicker("block");
-            }}
-          />
-          <path
-            d="M1185.6 294.398L1758 1216L1196.4 1548.4L642 1210L1185.6 294.398Z"
-            onClick={() => {
-              setCurrentClickedPart("outerTop");
-              setDisplayColorPicker("block");
-            }}
-            fill={outerTop}
-          />
-          <path
-            d="M1196.41 2105.2L1755.61 1319.2L1198.81 1649.2L645.609 1327.6L1196.41 2105.2Z"
-            onClick={() => {
-              setCurrentClickedPart("outerBottom");
-              setDisplayColorPicker("block");
-            }}
-            fill={outerBottom}
-          />
-          <path
-            d="M1186.79 456.398L1607.99 1166.8L1191.59 1428.4L788.391 1166.8L1186.79 456.398Z"
-            onClick={() => {
-              setCurrentClickedPart("innerTop");
-              setDisplayColorPicker("block");
-            }}
-            fill={innerTop}
-          />
-          <path
-            d="M1198.8 1992.4L1486.8 1572.4L1205.75 1750L928.805 1603.6L1198.8 1992.4Z"
-            onClick={() => {
-              setCurrentClickedPart("innerBottom");
-              setDisplayColorPicker("block");
-            }}
-            fill={innerBottom}
-          />
-        </svg> */}
-        <Logo
-          svgRef={svgRef}
-          bg={bg}
-          outerTop={outerTop}
-          outerBottom={outerBottom}
-          innerTop={innerTop}
-          innerBottom={innerBottom}
-          setCurrentClickedPart={setCurrentClickedPart}
-          setDisplayColorPicker={setDisplayColorPicker}
-        />
-        <Banner
-          svgRef={svgRef}
-          bg={bg}
-          outerTop={outerTop}
-          outerBottom={outerBottom}
-          innerTop={innerTop}
-          innerBottom={innerBottom}
-          textColor={textColor}
-          setCurrentClickedPart={setCurrentClickedPart}
-          setDisplayColorPicker={setDisplayColorPicker}
-        />
+          <TabsList className="w-fit bg-theme-dark text-theme-light/50 py-1.5 px-1.5 ">
+            <TabsTrigger value="logo" className="text-lg rounded-md">
+              Logo
+            </TabsTrigger>
+            <TabsTrigger value="banner" className="text-lg rounded-md">
+              Banner
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="logo">
+            <Logo
+              svgRef={svgRef}
+              bg={bg}
+              outerTop={outerTop}
+              outerBottom={outerBottom}
+              innerTop={innerTop}
+              innerBottom={innerBottom}
+              setCurrentClickedPart={setCurrentClickedPart}
+              setDisplayColorPicker={setDisplayColorPicker}
+            />
+          </TabsContent>
+          <TabsContent value="banner" className="w-full">
+            <Banner
+              svgRef={svgRef}
+              bg={bg}
+              outerTop={outerTop}
+              outerBottom={outerBottom}
+              innerTop={innerTop}
+              innerBottom={innerBottom}
+              textColor={textColor}
+              setCurrentClickedPart={setCurrentClickedPart}
+              setDisplayColorPicker={setDisplayColorPicker}
+            />
+          </TabsContent>
+        </Tabs>
 
-        <div className="flex gap-5">
-          <Button className="bg-[#222222]" onClick={() => downloadImage("jpg")}>
+        <div className="flex gap-5 ">
+          <Button
+            className="bg-theme-dark border border-theme-dark text-lg text-theme-light"
+            onClick={() => downloadImage("jpg")}
+          >
             Download JPG
           </Button>
           <Button
-            className="bg-[#222222]"
+            className="bg-theme-dark text-lg text-theme-light"
             onClick={() => {
               setbg("none");
-              downloadImage("svg");
+              downloadPng();
             }}
           >
-            Download SVG
+            Download PNG
           </Button>
         </div>
         <div
@@ -161,7 +151,7 @@ export default function Home() {
         >
           <HexColorPicker color={color} onChange={setColor} />
           <Input
-            className="w-40 h-10 p-2 mt-4 text-center rounded-md bg-[#222222] text-white"
+            className="w-40 h-10 p-2 mt-4 text-center rounded-md bg-theme-dark text-theme-light"
             value={color}
             onChange={(e) => setColor(e.target.value)}
           />
