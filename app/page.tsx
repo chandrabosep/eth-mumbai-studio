@@ -13,39 +13,43 @@ export default function Home() {
     bg: state.bg,
     setbg: state.setbg,
   }));
-  const [outerTop, setOuterTop] = useState("#F89D21");
-  const [outerBottom, setOuterBottom] = useState("#000000");
-  const [innerTop, setInnerTop] = useState("#000000");
-  const [innerBottom, setInnerBottom] = useState("#F89D21");
-  const [textColor, setTextColor] = useState("#F89D21");
+  const [outerTop, setOuterTop] = useState("#FFFFFF");
+  const [outerBottom, setOuterBottom] = useState("#121212");
+  const [innerTop, setInnerTop] = useState("#121212");
+  const [innerBottom, setInnerBottom] = useState("#FFFFFF");
+  const [textColor, setTextColor] = useState("#121212");
   const [currentClickedPart, setCurrentClickedPart] = useState("");
-  const [color, setColor] = useState("");
+  const { inputData, setInputData } = useStore((state) => ({
+    inputData: state.inputData,
+    setInputData: state.setInputData,
+  }));
+
   const [displayColorPicker, setDisplayColorPicker] = useState("hidden");
 
   useEffect(() => {
     switch (currentClickedPart) {
       case "outerTop":
-        setOuterTop(color);
+        setOuterTop(inputData);
         break;
       case "outerBottom":
-        setOuterBottom(color);
+        setOuterBottom(inputData);
         break;
       case "innerTop":
-        setInnerTop(color);
+        setInnerTop(inputData);
         break;
       case "innerBottom":
-        setInnerBottom(color);
+        setInnerBottom(inputData);
         break;
       case "bg":
-        setbg(color);
+        setbg(inputData);
         break;
       case "textColor":
-        setTextColor(color);
+        setTextColor(inputData);
         break;
       default:
         break;
     }
-  }, [color, setbg]);
+  }, [inputData]);
 
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -152,11 +156,11 @@ export default function Home() {
         <div
           className={`${displayColorPicker} flex flex-col gap-5 items-center`}
         >
-          <HexColorPicker color={color} onChange={setColor} />
+          <HexColorPicker color={inputData} onChange={setInputData} />
           <Input
             className="w-40 h-10 p-2 mt-4 text-center rounded-md bg-theme-dark text-theme-light"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
+            value={inputData}
+            onChange={(e) => setInputData(e.target.value)}
           />
         </div>
       </div>

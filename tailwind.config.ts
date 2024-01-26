@@ -22,6 +22,11 @@ const config = {
         "theme-bg": "#121212",
         "theme-dark": "#1F1F1F",
         "theme-light": "#E0E0E0",
+        "theme-kaali": "#121212",
+        "theme-peeli": "#F89D21",
+        "theme-best": "#ED1F1F",
+        "theme-local": "#A775E8",
+        "theme-dhobi": "#121212",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

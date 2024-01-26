@@ -1,4 +1,5 @@
 "use client";
+import { useStore } from "@/context/store";
 import React, { useEffect } from "react";
 
 interface BannerProps {
@@ -24,6 +25,10 @@ const Banner: React.FC<BannerProps> = ({
   setCurrentClickedPart,
   setDisplayColorPicker,
 }) => {
+  const { inputData, setInputData } = useStore((state) => ({
+    inputData: state.inputData,
+    setInputData: state.setInputData,
+  }));
   return (
     <>
       <svg
@@ -41,6 +46,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("bg");
             setDisplayColorPicker("block");
+            setInputData(bg);
           }}
         />
         <path
@@ -48,6 +54,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("outerTop");
             setDisplayColorPicker("block");
+            setInputData(outerTop);
           }}
           fill={outerTop}
         />
@@ -56,6 +63,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("outerBottom");
             setDisplayColorPicker("block");
+            setInputData(outerBottom);
           }}
           fill={outerBottom}
         />
@@ -64,6 +72,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("innerTop");
             setDisplayColorPicker("block");
+            setInputData(innerTop);
           }}
           fill={innerTop}
         />
@@ -72,6 +81,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("innerBottom");
             setDisplayColorPicker("block");
+            setInputData(innerBottom);
           }}
           fill={innerBottom}
         />
@@ -80,6 +90,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -88,6 +99,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -96,6 +108,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -104,6 +117,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -112,6 +126,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -120,6 +135,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -128,6 +144,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -136,6 +153,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />
@@ -144,6 +162,7 @@ const Banner: React.FC<BannerProps> = ({
           onClick={() => {
             setCurrentClickedPart("textColor");
             setDisplayColorPicker("block");
+            setInputData(textColor);
           }}
           fill={textColor}
         />

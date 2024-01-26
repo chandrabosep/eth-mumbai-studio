@@ -1,4 +1,5 @@
 "use client";
+import { useStore } from "@/context/store";
 import React, { useEffect } from "react";
 
 interface LogoProps {
@@ -22,6 +23,10 @@ const Logo: React.FC<LogoProps> = ({
   setCurrentClickedPart,
   setDisplayColorPicker,
 }) => {
+  const { inputData, setInputData } = useStore((state) => ({
+    inputData: state.inputData,
+    setInputData: state.setInputData,
+  }));
   return (
     <>
       <svg
@@ -40,6 +45,7 @@ const Logo: React.FC<LogoProps> = ({
           onClick={() => {
             setCurrentClickedPart("bg");
             setDisplayColorPicker("block");
+            setInputData(bg);
           }}
         />
         <path
@@ -47,6 +53,7 @@ const Logo: React.FC<LogoProps> = ({
           onClick={() => {
             setCurrentClickedPart("outerTop");
             setDisplayColorPicker("block");
+            setInputData(outerTop);
           }}
           fill={outerTop}
         />
@@ -55,6 +62,7 @@ const Logo: React.FC<LogoProps> = ({
           onClick={() => {
             setCurrentClickedPart("outerBottom");
             setDisplayColorPicker("block");
+            setInputData(outerBottom);
           }}
           fill={outerBottom}
         />
@@ -63,6 +71,7 @@ const Logo: React.FC<LogoProps> = ({
           onClick={() => {
             setCurrentClickedPart("innerTop");
             setDisplayColorPicker("block");
+            setInputData(innerTop);
           }}
           fill={innerTop}
         />
@@ -71,6 +80,7 @@ const Logo: React.FC<LogoProps> = ({
           onClick={() => {
             setCurrentClickedPart("innerBottom");
             setDisplayColorPicker("block");
+            setInputData(innerBottom);
           }}
           fill={innerBottom}
         />

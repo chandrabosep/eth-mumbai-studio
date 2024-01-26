@@ -2,13 +2,13 @@ import { create } from "zustand";
 interface State {
   bg: string;
   setbg: (bg: string) => void;
-  stroke: string;
-  setStroke: (stroke: string) => void;
+  inputData: string;
+  setInputData: (input: string) => void;
 }
 
 export const useStore = create<State>((set) => ({
-  bg: "#333333",
+  bg: "#F89D21",
   setbg: (newBg: string) => set({ bg: newBg }),
-  stroke: "content",
-  setStroke: (newStroke: string) => set({ stroke: newStroke }),
+  inputData: "",
+  setInputData: (newInput: string) => set({ inputData: newInput }),
 }));
