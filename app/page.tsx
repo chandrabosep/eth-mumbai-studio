@@ -7,16 +7,17 @@ import Banner from "@/components/Banner";
 import Logo from "@/components/Logo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useStore } from "@/context/store";
+import Link from "next/link";
 
 export default function Home() {
   const { bg, setbg } = useStore((state) => ({
     bg: state.bg,
     setbg: state.setbg,
   }));
-  const [outerTop, setOuterTop] = useState("#FFFFFF");
+  const [outerTop, setOuterTop] = useState("#F89D21");
   const [outerBottom, setOuterBottom] = useState("#121212");
   const [innerTop, setInnerTop] = useState("#121212");
-  const [innerBottom, setInnerBottom] = useState("#FFFFFF");
+  const [innerBottom, setInnerBottom] = useState("#F89D21");
   const [textColor, setTextColor] = useState("#121212");
   const [currentClickedPart, setCurrentClickedPart] = useState("");
   const { inputData, setInputData } = useStore((state) => ({
@@ -92,20 +93,24 @@ export default function Home() {
     img.src = url;
   };
   return (
-    <div className="bg-black min-h-screen p-24 flex justify-center items-center">
+    <div className="max-w-6xl mx-auto w-full pt-[40%] pb-[20%] md:pt-[8%] md:pb-[4%] flex flex-col gap-28">
       <div className="flex flex-col items-center gap-8">
         <Tabs
           defaultValue="banner"
-          className="w-full flex flex-col gap-8 justify-center items-center"
+          className="w-full flex flex-col gap-6 justify-center items-center"
         >
-          <TabsList className="w-fit bg-theme-dark text-theme-light/50 py-1.5 px-1.5 ">
+          <p className="text-sm md:text-base">Tap the colors to edit them</p>
+          <TabsList className="w-fit bg-theme-kaali text-theme-dhobi/50 p-1 md:p-2 ">
             <TabsTrigger
               value="banner"
-              className="text-lg  font-light rounded-md"
+              className={`text-sm md:text-lg font-light rounded-full`}
             >
               Banner
             </TabsTrigger>
-            <TabsTrigger value="logo" className="text-lg font-light rounded-md">
+            <TabsTrigger
+              value="logo"
+              className="text-sm md:text-lg px-6 font-light rounded-3xl"
+            >
               Logo
             </TabsTrigger>
           </TabsList>
@@ -138,13 +143,13 @@ export default function Home() {
 
         <div className="flex gap-5 ">
           <Button
-            className="bg-theme-dark border font-light border-theme-light/10 text-base text-theme-light"
+            className="bg-theme-peeli rounded-full md:text-base text-sm font-semibold text-theme-kaali"
             onClick={() => downloadImage("jpg")}
           >
             Download JPG
           </Button>
           <Button
-            className="bg-theme-dark text-base border-theme-light/10 font-light text-theme-light"
+            className="bg-theme-kaali rounded-full md:text-base text-sm  font-light text-theme-dhobi"
             onClick={() => {
               setbg("none");
               downloadPng();
@@ -158,11 +163,17 @@ export default function Home() {
         >
           <HexColorPicker color={inputData} onChange={setInputData} />
           <Input
-            className="w-40 h-10 p-2 mt-4 text-center rounded-md bg-theme-dark text-theme-light"
+            className="w-40 h-10 p-2 mt-4 text-center rounded-md bg-theme-kaali text-theme-dhobi"
             value={inputData}
             onChange={(e) => setInputData(e.target.value)}
           />
         </div>
+      </div>
+      <div>
+        <p className="text-center text-sm md:text-lg">
+          created by{" "}
+          <Link href="https://twitter.com/Chandra_Bose31">@Chandra_Bose31</Link>
+        </p>
       </div>
     </div>
   );

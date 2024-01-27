@@ -36,7 +36,7 @@ const Logo: React.FC<LogoProps> = ({
         fill="none"
         ref={svgRef}
         xmlns="http://www.w3.org/2000/svg"
-        className="border border-1.5 border-white/10 rounded-md"
+        className="border-2 border-theme-kaali/40 rounded-xl"
       >
         <rect
           width="2400"

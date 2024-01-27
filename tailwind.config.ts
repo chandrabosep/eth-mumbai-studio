@@ -19,14 +19,14 @@ const config = {
     },
     extend: {
       colors: {
-        "theme-bg": "#121212",
+        "theme-bg": "#FFF1DF",
         "theme-dark": "#1F1F1F",
         "theme-light": "#E0E0E0",
         "theme-kaali": "#121212",
         "theme-peeli": "#F89D21",
         "theme-best": "#ED1F1F",
         "theme-local": "#A775E8",
-        "theme-dhobi": "#121212",
+        "theme-dhobi": "#F1F1F1",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

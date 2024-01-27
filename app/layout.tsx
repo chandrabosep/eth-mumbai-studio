@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const herokid = localFont({ src: "../fonts/Herokid-Regular.otf" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${herokid.className} bg-theme-bg min-h-screen pt-8 h-screen flex flex-col`}
+      >
+        <div className="px-4 md:px-0">
+          <Navbar />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }

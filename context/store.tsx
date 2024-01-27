@@ -7,7 +7,7 @@ interface State {
 }
 
 export const useStore = create<State>((set) => ({
-  bg: "#F89D21",
+  bg: "#FFF1DF",
   setbg: (newBg: string) => set({ bg: newBg }),
   inputData: "",
   setInputData: (newInput: string) => set({ inputData: newInput }),
