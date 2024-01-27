@@ -58,7 +58,7 @@ export default function ColorExtractor() {
         <div className="w-fit">
           <Label
             htmlFor="file"
-            className="p-2.5 md:p-4 md:text-base bg-theme-bg text-theme-kaali border border-theme-kaali rounded-lg"
+            className="p-2.5 md:p-4 md:text-base bg-theme-bg shadow-md shadow-black text-theme-kaali border border-theme-kaali rounded-lg"
           >
             Generate palette from image
           </Label>

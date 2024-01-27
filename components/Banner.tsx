@@ -32,7 +32,7 @@ const Banner: React.FC<BannerProps> = ({
   return (
     <>
       <svg
-        height={"400"}
+        height="400"
         viewBox="0 0 5110 2400"
         fill="none"
         ref={svgRef}

@@ -116,7 +116,7 @@ export default function Home() {
     img.src = url;
   };
   return (
-    <div className="max-w-6xl mx-auto w-full pt-[30%] pb-[20%] md:pt-[8%] md:pb-[4%] flex flex-col gap-28">
+    <div className="max-w-6xl mx-auto w-full pt-[30%] pb-[20%] md:pt-[5%] md:pb-[4%] flex flex-col gap-28">
       <div className="flex flex-col items-center gap-8">
         <ColorExtractor />
         <Tabs
