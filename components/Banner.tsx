@@ -37,7 +37,7 @@ const Banner: React.FC<BannerProps> = ({
         fill="none"
         ref={svgRef}
         xmlns="http://www.w3.org/2000/svg"
-        className="border-2 border-theme-kaali/40 rounded-xl w-[95%] mx-auto h-full md:w-full md:h-full"
+        className="border-2 border-theme-kaali/40 rounded-xl mx-auto w-[95%]  h-fit md:w-full md:h-full"
       >
         <rect
           width="5110"

@@ -8,18 +8,41 @@ import Logo from "@/components/Logo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useStore } from "@/context/store";
 import Link from "next/link";
+import ColorExtractor from "@/components/ColorExtractor";
 
 export default function Home() {
-  const { bg, setbg } = useStore((state) => ({
+  const {
+    bg,
+    setbg,
+    outerTop,
+    setOuterTop,
+    outerBottom,
+    setOuterBottom,
+    innerTop,
+    setInnerTop,
+    innerBottom,
+    setInnerBottom,
+    textColor,
+    setTextColor,
+    currentClickedPart,
+    setCurrentClickedPart,
+  } = useStore((state) => ({
     bg: state.bg,
     setbg: state.setbg,
+    outerTop: state.outerTop,
+    setOuterTop: state.setOuterTop,
+    outerBottom: state.outerBottom,
+    setOuterBottom: state.setOuterBottom,
+    innerTop: state.innerTop,
+    setInnerTop: state.setInnerTop,
+    innerBottom: state.innerBottom,
+    setInnerBottom: state.setInnerBottom,
+    textColor: state.textColor,
+    setTextColor: state.setTextColor,
+    currentClickedPart: state.currentClickedPart,
+    setCurrentClickedPart: state.setCurrentClickedPart,
   }));
-  const [outerTop, setOuterTop] = useState("#F89D21");
-  const [outerBottom, setOuterBottom] = useState("#121212");
-  const [innerTop, setInnerTop] = useState("#121212");
-  const [innerBottom, setInnerBottom] = useState("#F89D21");
-  const [textColor, setTextColor] = useState("#121212");
-  const [currentClickedPart, setCurrentClickedPart] = useState("");
+
   const { inputData, setInputData } = useStore((state) => ({
     inputData: state.inputData,
     setInputData: state.setInputData,
@@ -50,7 +73,7 @@ export default function Home() {
       default:
         break;
     }
-  }, [inputData]);
+  }, [inputData, bg]);
 
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -93,14 +116,14 @@ export default function Home() {
     img.src = url;
   };
   return (
-    <div className="max-w-6xl mx-auto w-full pt-[40%] pb-[20%] md:pt-[8%] md:pb-[4%] flex flex-col gap-28">
+    <div className="max-w-6xl mx-auto w-full pt-[30%] pb-[20%] md:pt-[8%] md:pb-[4%] flex flex-col gap-28">
       <div className="flex flex-col items-center gap-8">
+        <ColorExtractor />
         <Tabs
           defaultValue="banner"
           className="w-full flex flex-col gap-6 justify-center items-center"
         >
-          <p className="text-sm md:text-base">Tap the colors to edit them</p>
-          <TabsList className="w-fit bg-theme-kaali text-theme-dhobi/50 p-1 md:p-2 ">
+          <TabsList className="w-fit bg-theme-kaali/90 text-theme-dhobi/50 p-1 md:p-2 ">
             <TabsTrigger
               value="banner"
               className={`text-sm md:text-lg font-light rounded-full`}
@@ -109,7 +132,7 @@ export default function Home() {
             </TabsTrigger>
             <TabsTrigger
               value="logo"
-              className="text-sm md:text-lg px-6 font-light rounded-3xl"
+              className="text-sm md:text-lg px-6 font-light rounded-full"
             >
               Logo
             </TabsTrigger>
@@ -143,13 +166,13 @@ export default function Home() {
 
         <div className="flex gap-5 ">
           <Button
-            className="bg-theme-peeli rounded-full md:text-base text-sm font-semibold text-theme-kaali"
+            className={`bg-theme-peeli rounded-md md:rounded-full md:text-base text-sm font-semibold text-theme-kaali`}
             onClick={() => downloadImage("jpg")}
           >
             Download JPG
           </Button>
           <Button
-            className="bg-theme-kaali rounded-full md:text-base text-sm  font-light text-theme-dhobi"
+            className="bg-theme-kaali  rounded-md md:rounded-full md:text-base text-sm font-light text-theme-dhobi"
             onClick={() => {
               setbg("none");
               downloadPng();
