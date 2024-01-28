@@ -15,7 +15,7 @@ export default function Navbar() {
           height={130}
         />
       </div>
-      <div className="hidden md:flex md:w-[12%]">
+      <div className="hidden md:flex md:w-[12%] ">
         <Link
           href="https://ethmumbai.in/"
           target="_blank"

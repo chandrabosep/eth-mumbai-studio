@@ -9,9 +9,6 @@ import { useStore } from "@/context/store";
 import Link from "next/link";
 import ColorExtractor from "@/components/ColorExtractor";
 import DownloadBtn from "@/components/DownloadBtn";
-import localFont from "next/font/local";
-
-const paper = localFont({ src: "../fonts/PAPER.otf" });
 
 export default function Home() {
   const {
