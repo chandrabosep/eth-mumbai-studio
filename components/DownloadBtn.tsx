@@ -68,13 +68,13 @@ export default function DownloadBtn({
     <div className="flex flex-col gap-8 items-center">
       <div className="grid grid-cols-2 gap-y-6 gap-x-8 items-center ">
         <Button
-          className={`bg-theme-peeli rounded-md  md:text-base text-sm font-semibold text-theme-kaali`}
+          className={`bg-theme-peeli rounded-md text-sm font-semibold text-theme-kaali`}
           onClick={() => downloadImage("jpg")}
         >
           Download JPG
         </Button>
         <Button
-          className="bg-theme-kaali  rounded-md  md:text-base text-sm font-light text-theme-dhobi"
+          className="bg-theme-kaali  rounded-md text-sm font-light text-theme-dhobi"
           onClick={() => {
             setbg("none");
             downloadPng();
@@ -83,7 +83,7 @@ export default function DownloadBtn({
           Download PNG
         </Button>
         <Button
-          className="bg-theme-kaali  rounded-md  md:text-base text-sm font-light text-theme-dhobi"
+          className="bg-theme-kaali  rounded-md text-sm font-light text-theme-dhobi"
           onClick={() => {
             setbg("none");
             downloadSVG();

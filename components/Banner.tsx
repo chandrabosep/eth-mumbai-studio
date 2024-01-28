@@ -30,14 +30,14 @@ const Banner: React.FC<BannerProps> = ({
     setInputData: state.setInputData,
   }));
   return (
-    <>
+    <div className="md:w-9/12 mx-auto">
       <svg
         height="400"
         viewBox="0 0 5110 2400"
         fill="none"
         ref={svgRef}
         xmlns="http://www.w3.org/2000/svg"
-        className="border-2 border-theme-kaali/40 rounded-xl mx-auto w-[95%]  h-fit md:w-full md:h-full"
+        className="border-[2px] border-theme-kaali/40 rounded-md mx-auto w-[95%] h-fit md:w-full md:h-full"
       >
         <rect
           width="5110"
@@ -167,7 +167,7 @@ const Banner: React.FC<BannerProps> = ({
           fill={textColor}
         />
       </svg>
-    </>
+    </div>
   );
 };
 

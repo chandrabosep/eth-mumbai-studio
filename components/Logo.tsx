@@ -1,6 +1,6 @@
 "use client";
 import { useStore } from "@/context/store";
-import React, { useEffect } from "react";
+import React from "react";
 
 interface LogoProps {
   svgRef: React.RefObject<SVGSVGElement>;
@@ -28,7 +28,7 @@ const Logo: React.FC<LogoProps> = ({
     setInputData: state.setInputData,
   }));
   return (
-    <>
+    <div className="md:w-11/12 md:h-1/2">
       <svg
         width="400"
         height="400"
@@ -36,7 +36,7 @@ const Logo: React.FC<LogoProps> = ({
         fill="none"
         ref={svgRef}
         xmlns="http://www.w3.org/2000/svg"
-        className="border-2 border-theme-kaali/40 rounded-xl"
+        className="border-[2px] border-theme-kaali/40 rounded-md mx-auto w-[95%] h-fit md:w-full md:h-full"
       >
         <rect
           width="2400"
@@ -85,7 +85,7 @@ const Logo: React.FC<LogoProps> = ({
           fill={innerBottom}
         />
       </svg>
-    </>
+    </div>
   );
 };
 

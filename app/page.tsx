@@ -8,8 +8,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useStore } from "@/context/store";
 import Link from "next/link";
 import ColorExtractor from "@/components/ColorExtractor";
-import Mint from "@/components/Mint";
 import DownloadBtn from "@/components/DownloadBtn";
+import localFont from "next/font/local";
+
+const paper = localFont({ src: "../fonts/PAPER.otf" });
 
 export default function Home() {
   const {
@@ -79,22 +81,22 @@ export default function Home() {
   const svgRef = useRef<SVGSVGElement>(null);
 
   return (
-    <div className="max-w-6xl mx-auto w-full pt-[22%] pb-[10%] md:pt-[5%] md:pb-[2%] flex flex-col gap-28">
+    <div className="max-w-screen-xl mx-auto py-16 md:py-12 flex flex-col gap-28">
       <div className="flex flex-col items-center gap-8 md:gap-10">
         <Tabs
           defaultValue="banner"
           className="w-full flex flex-col gap-6 justify-center items-center"
         >
-          <TabsList className="w-fit bg-theme-kaali/90 text-theme-dhobi/50 p-1 md:p-1.5 ">
+          <TabsList className="w-fit bg-theme-kaali/90 text-theme-dhobi/50 p-1 md:p-1 ">
             <TabsTrigger
               value="banner"
-              className={`text-sm md:text-base font-light rounded-full`}
+              className={`text-sm md:text-sm font-light rounded-full`}
             >
               Banner
             </TabsTrigger>
             <TabsTrigger
               value="logo"
-              className="text-sm md:text-base font-light rounded-full"
+              className="text-sm md:text-sm font-light rounded-full"
             >
               Logo
             </TabsTrigger>
@@ -142,7 +144,7 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <p className="text-center text-sm md:text-lg">
+        <p className="text-center text-sm">
           created by{" "}
           <Link href="https://twitter.com/Chandra_Bose31">@Chandra_Bose31</Link>
         </p>

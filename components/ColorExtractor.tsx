@@ -52,13 +52,13 @@ export default function ColorExtractor() {
   return (
     <>
       <div className="flex flex-col gap-6 py-4">
-        <p className="text-sm md:text-base text-center">
+        <p className="text-sm text-center">
           Tap the colors to edit them or
         </p>
         <div className="w-fit">
           <Label
             htmlFor="file"
-            className="p-3 md:p-4 md:text-base bg-theme-bg shadow-md  shadow-theme-kaali/70 text-theme-kaali border border-theme-kaali/20 rounded-lg"
+            className="p-3 md:p-4 bg-theme-bg shadow-md  shadow-theme-kaali/70 text-theme-kaali border border-theme-kaali/20 rounded-lg"
           >
             Generate palette from image
           </Label>

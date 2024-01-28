@@ -5,21 +5,21 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <div className="px-1 max-w-screen-2xl shadow-none md:w-11/12 md:shadow-[#707070] md:shadow-md w-full md:mx-auto flex justify-between items-center rounded-full md:border md:border-theme-kaali/30">
+    <div className="px-1.5 max-w-screen-xl md:pr-6 md:w-11/12 w-full md:mx-auto flex justify-between items-center md:border border-theme-kaali rounded-full md:shadow-md md:shadow-[#707070]">
       <div className="w-full md:w-fit">
         <Image
           src="/logo.png"
-          className="mx-auto "
+          className="mx-auto py-1 "
           alt="logo"
-          width={180}
-          height={180}
+          width={130}
+          height={130}
         />
       </div>
-      <div className="hidden md:flex md:w-2/12">
+      <div className="hidden md:flex md:w-[12%]">
         <Link
           href="https://ethmumbai.in/"
           target="_blank"
-          className="bg-theme-peeli px-12 py-2 text-xl font-semibold text-theme-kaali rounded-2xl"
+          className="bg-theme-peeli w-full text-center py-2.5 text-sm font-semibold text-theme-kaali rounded-full"
         >
           Apply Now
         </Link>
