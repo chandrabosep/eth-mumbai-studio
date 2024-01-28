@@ -86,6 +86,8 @@ export default function Mint({
       console.log(error);
     }
   };
+  console.log("JWT Token:", process.env.NEXT_PUBLIC_JWT_TOKEN);
+
   return (
     <div>
       <Button

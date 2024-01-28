@@ -17,8 +17,9 @@ export default function Navbar() {
       </div>
       <div className="hidden md:flex md:w-2/12">
         <Link
-          href="/apply"
-          className="bg-theme-peeli px-7 py-2.5 text-xl font-semibold text-theme-kaali rounded-full"
+          href="https://ethmumbai.in/"
+          target="_blank"
+          className="bg-theme-peeli px-12 py-2 text-xl font-semibold text-theme-kaali rounded-2xl"
         >
           Apply Now
         </Link>
