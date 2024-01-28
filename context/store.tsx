@@ -8,6 +8,8 @@ interface State {
   innerBottom: string;
   textColor: string;
   currentClickedPart: string;
+  image: string;
+  setImage: (image: string) => void;
   setInputData: (input: string) => void;
   setbg: (bg: string) => void;
   setOuterTop: (color: string) => void;
@@ -27,7 +29,8 @@ export const useStore = create<State>((set) => ({
   innerBottom: "#F89D21",
   textColor: "#121212",
   currentClickedPart: "",
-
+  image: "",
+  setImage: (newImage: string) => set({ image: newImage }),
   setbg: (newBg: string) => set({ bg: newBg }),
   setInputData: (newInput: string) => set({ inputData: newInput }),
   setOuterTop: (color) => set({ outerTop: color }),

@@ -2,13 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import Banner from "@/components/Banner";
 import Logo from "@/components/Logo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useStore } from "@/context/store";
 import Link from "next/link";
 import ColorExtractor from "@/components/ColorExtractor";
+import Mint from "@/components/Mint";
+import DownloadBtn from "@/components/DownloadBtn";
 
 export default function Home() {
   const {
@@ -77,62 +78,23 @@ export default function Home() {
 
   const svgRef = useRef<SVGSVGElement>(null);
 
-  async function downloadPng() {
-    await new Promise<void>(() => {
-      setTimeout(() => {
-        downloadImage("png");
-      }, 1000);
-    });
-  }
-
-  const downloadImage = (type: string) => {
-    const svgString = new XMLSerializer().serializeToString(
-      svgRef.current as SVGSVGElement
-    );
-
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-
-    const img = new Image();
-    const svgBlob = new Blob([svgString], { type: "image/svg+xml" });
-    const url = URL.createObjectURL(svgBlob);
-
-    img.onload = () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      //@ts-ignore
-      ctx.drawImage(img, 0, 0);
-      const dataURL = canvas.toDataURL(`image/${type}`);
-      const anchorElement = document.createElement("a");
-      document.body.appendChild(anchorElement);
-      anchorElement.href = dataURL;
-      anchorElement.download = `ethMumbai.${type}`;
-      anchorElement.click();
-      document.body.removeChild(anchorElement);
-
-      URL.revokeObjectURL(url);
-    };
-
-    img.src = url;
-  };
   return (
-    <div className="max-w-6xl mx-auto w-full pt-[30%] pb-[20%] md:pt-[5%] md:pb-[4%] flex flex-col gap-28">
-      <div className="flex flex-col items-center gap-8">
-        <ColorExtractor />
+    <div className="max-w-6xl mx-auto w-full pt-[22%] pb-[10%] md:pt-[5%] md:pb-[2%] flex flex-col gap-28">
+      <div className="flex flex-col items-center gap-8 md:gap-10">
         <Tabs
           defaultValue="banner"
           className="w-full flex flex-col gap-6 justify-center items-center"
         >
-          <TabsList className="w-fit bg-theme-kaali/90 text-theme-dhobi/50 p-1 md:p-2 ">
+          <TabsList className="w-fit bg-theme-kaali/90 text-theme-dhobi/50 p-1 md:p-1.5 ">
             <TabsTrigger
               value="banner"
-              className={`text-sm md:text-lg font-light rounded-full`}
+              className={`text-sm md:text-base font-light rounded-full`}
             >
               Banner
             </TabsTrigger>
             <TabsTrigger
               value="logo"
-              className="text-sm md:text-lg px-6 font-light rounded-full"
+              className="text-sm md:text-base font-light rounded-full"
             >
               Logo
             </TabsTrigger>
@@ -163,24 +125,8 @@ export default function Home() {
             />
           </TabsContent>
         </Tabs>
+        <ColorExtractor />
 
-        <div className="flex gap-5 ">
-          <Button
-            className={`bg-theme-peeli rounded-md md:rounded-full md:text-base text-sm font-semibold text-theme-kaali`}
-            onClick={() => downloadImage("jpg")}
-          >
-            Download JPG
-          </Button>
-          <Button
-            className="bg-theme-kaali  rounded-md md:rounded-full md:text-base text-sm font-light text-theme-dhobi"
-            onClick={() => {
-              setbg("none");
-              downloadPng();
-            }}
-          >
-            Download PNG
-          </Button>
-        </div>
         <div
           className={`${displayColorPicker} flex flex-col gap-5 items-center`}
         >
@@ -190,6 +136,9 @@ export default function Home() {
             value={inputData}
             onChange={(e) => setInputData(e.target.value)}
           />
+        </div>
+        <div className="pt-4">
+          <DownloadBtn svgRef={svgRef} />
         </div>
       </div>
       <div>

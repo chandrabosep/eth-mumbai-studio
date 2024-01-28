@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${herokid.className} bg-theme-bg min-h-screen pt-8 h-screen flex flex-col`}
+        className={`${herokid.className} bg-theme-bg min-h-screen pt-8 h-full flex flex-col`}
       >
         <div className="px-4 md:px-0">
           <Navbar />
