@@ -1,15 +1,12 @@
-import { useRouter } from "next/navigation";
 import React from "react";
-import axios from "axios";
+import { toast, useToast } from "@/components/ui/use-toast";
 import { Button } from "./ui/button";
-
 export default function Mint({
   svgRef,
 }: {
   svgRef: React.RefObject<SVGSVGElement>;
 }) {
   const axios = require("axios");
-  const router = useRouter();
   const getJpgImageObject = (): Promise<Blob> => {
     return new Promise((resolve) => {
       const svgString = new XMLSerializer().serializeToString(
@@ -66,27 +63,36 @@ export default function Mint({
     formData.append("pinataOptions", pinataOptions);
 
     try {
-      const res: any = await axios
-        .post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
+      toast({
+        title: "Uploading to IPFS",
+        description: "This might take a while, Please wait for image to load.",
+      });
+
+      const res = await axios.post(
+        "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        formData,
+        {
           maxBodyLength: "Infinity",
           headers: {
             //@ts-ignore
             "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_JWT_TOKEN}`,
           },
-        })
-        .then((res: any) => {
-          const newTab = window.open(
-            `https://zora.co/create/single-edition?image=${res.data.IpfsHash}&name=ETH_Mumbai_Studio&description=created%20with%20eth%20mumbai%20studio%20by%20Chandra%20Bose%0A`,
-            "_blank"
-          );
-        });
+        }
+      );
+
+      setTimeout(() => {
+        window.open(
+          `https://zora.co/create/single-edition?image=${res.data.IpfsHash}&name=ETH_Mumbai_Studio&description=created%20with%20eth%20mumbai%20studio%20by%20Chandra%20Bose%0A`,
+          "_blank"
+        );
+      }, 1000);
+
       console.log(res.data);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log("JWT Token:", process.env.NEXT_PUBLIC_JWT_TOKEN);
 
   return (
     <div>

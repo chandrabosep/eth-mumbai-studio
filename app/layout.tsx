@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/toaster";
 
 const herokid = localFont({ src: "../fonts/Herokid-Regular.otf" });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Navbar />
         </div>
         {children}
+        <Toaster />
       </body>
     </html>
   );
