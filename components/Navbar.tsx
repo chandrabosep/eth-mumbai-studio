@@ -15,13 +15,13 @@ export default function Navbar() {
           height={130}
         />
       </div>
-      <div className="hidden md:flex md:w-[12%] ">
+      <div className="hidden md:flex md:w-[15%] ">
         <Link
           href="https://ethmumbai.in/"
           target="_blank"
-          className="bg-theme-peeli w-full text-center py-2.5 text-sm font-semibold text-theme-kaali rounded-full"
+          className="bg-theme-peeli w-full text-center py-2.5 text-base font-bold text-theme-kaali rounded-full"
         >
-          Apply Now
+          Apply कर
         </Link>
       </div>
     </div>
