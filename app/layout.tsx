@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from '@vercel/analytics/react';
 
 const herokid = localFont({ src: "../fonts/Herokid-Regular.otf" });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Navbar />
         </div>
         {children}
+        <Analytics />
         <Toaster />
       </body>
     </html>
