@@ -146,7 +146,7 @@ export default function Home() {
         <Link
           href={`https://twitter.com/intent/tweet?text=${tweet}`}
           target="_blank"
-          className="bg-theme-peeli w-3/4 md:w-1/3 text-center py-3 text-base font-semibold text-theme-kaali rounded-sm flex items-center justify-center gap-2"
+          className="bg-theme-peeli w-1/2 text-center py-3 text-base font-semibold text-theme-kaali rounded-sm flex items-center justify-center gap-2"
         >
           {
             <svg
